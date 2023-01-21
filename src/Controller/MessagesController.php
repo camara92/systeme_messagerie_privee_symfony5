@@ -44,4 +44,12 @@ class MessagesController extends AbstractController
 
         ]);
     }
+
+    #[Route('/received', name: 'app_received')]
+    public function received(): Response
+    {
+        return $this->render('messages/received.html.twig', [
+            'controller_name' => 'Message(s) reçu(s)',
+        ]);
+    }
 }

@@ -13,8 +13,11 @@
 				</h1>
 				<p>Résumé de la messagerie
 				</p>
+				{% if app.user %}
+				
 				<p>Reçus : {{app.user.received|length }} </p>
 				<p>Envoyés : {{app.user.sent|length }}  
+				{% endif %}
 				</p>
 				<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
 					Voir mes dossiers

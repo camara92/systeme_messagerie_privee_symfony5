@@ -5,42 +5,57 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<section class="container">
 
 		<div class="row">
-			<div class="col">
+			<div class="col-12">
 				<h1>Messagerie
 				</h1>
-				<p>Résumé de la messagerie
-				</p>
-				<p>Reçus : {{app.user.received|length }} </p>
-				<p>Envoyés : {{app.user.sent|length }}  
-				</p>
+				<h2>Boite de réception
+				</h2>
+				<p>Vous avez reçu :
+					{{app.user.received|length }}
+					messages</p>
+			</div>
+			<div class="col-3">De </div>
+			<div class="col-3">sujet </div>
+			<div class="col-3">Date </div>
+			<div class="col-3">Actions </div>
+    {# parcourir les messages reçus  #}
+    {% for message in app.user.received  %}
+        <div class="col-3"> {{message.sender.email}} </div>
+			<div class="col-3"> {{ message.title }}</div>
+			<div class="col-3"> {{message.createdAt | date }} </div>
+			<div class="col-3"> </div>
+    {% endfor %}
+
+			<div class="col">
 				<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
 					Voir mes dossiers
 				</a>
-                <a href=" {{path('app_send')}} " class="btn btn-primary">Envoyer un message </a>
+				<a href=" {{path('app_send')}} " class="btn btn-primary">Envoyer un message
+				</a>
 			</div>
 		</div>
+	</section>
 
-		<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-			<div class="offcanvas-header">
-				<h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers
-				</h2>
-				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers
+			</h2>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="list-group">
+				<a class="list-group-item list-group-item-action " href=" {{path('app_messages')}} ">Accueil</a>
 			</div>
-			<div class="offcanvas-body">
-				<div class="list-group">
-					<a class="list-group-item list-group-item-action " href=" {{path('app_messages')}} ">Accueil</a>
-				</div>
-                <div class="list-group">
-					<a class="list-group-item list-group-item-action active" href=" {{path('app_received')}} ">Boite de réception</a>
-				</div>
-                <div class="list-group">
-					<a class="list-group-item list-group-item-action " href=" {{path('app_messages')}} ">Messages envoyés </a>
-				</div>
+			<div class="list-group">
+				<a class="list-group-item list-group-item-action active" href=" {{path('app_received')}} ">Boite de réception</a>
+			</div>
+			<div class="list-group">
+				<a class="list-group-item list-group-item-action " href=" {{path('app_messages')}} ">Messages envoyés
+				</a>
 			</div>
 		</div>
 	</div>
-
-{% endblock %}
+</div>{% endblock %}

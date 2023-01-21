@@ -1,0 +1,596 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <style>
+    body {
+    margin: 0px;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    
+}
+.nav-collapse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.918);
+    opacity: 0.9;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    display: none;
+}
+.nav-collapse ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+.nav-collapse li {
+    box-sizing: border-box;
+    list-style: none;
+    text-align: center;
+    font-family: 'Lekton';
+    padding: 10px 20px;
+    margin: 10px 10px;
+    border: 1px solid white;
+}
+.nav-collapse li:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.cross {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 25px;
+    right: 25px;
+    height: 30px;
+    width: 30px;
+}
+.crossline:first-child{
+    position: absolute;
+    transform: rotate(45deg);
+}
+.crossline:nth-child(2){
+    position: absolute;
+    transform: rotate(-45deg);
+}
+.header {
+    /* background-image: url('https://static.pexels.com/photos/194094/pexels-photo-194094.jpeg');
+    background-size: cover;
+    background-position: center; */
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+
+}
+#header {
+    animation-duration: 3s;
+}
+.header-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    height: 55%;
+    width: 80%;
+    z-index: 1;
+}
+.header-content>h1 {
+    font-family: 'Lekton';
+    color: white;
+    margin: 0px;
+}
+.header-background {
+    background-image: url('https://static.pexels.com/photos/194094/pexels-photo-194094.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    z-index: 0;
+    opacity: 0.5;
+}
+.navbar {
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    z-index: 4;
+}
+.navbar>h2 {
+    margin: 0px;
+    padding: 30px;
+    font-family: arial;
+    color: white;
+}
+.hamburger {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    z-index: 3;
+}
+.line {
+    height: 2px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    width: 20px;
+    margin: 2.5px 0px;
+    z-index: 3;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+.section ul {
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 50px;
+}
+.section li {
+    list-style: none;
+    display: inline;
+    margin: 0px -1px;
+    background-color: #E9E9E9;
+    color: #969696;
+    padding: 5px 20px;
+    font-family: 'Lekton';
+    letter-spacing: 3px;
+    font-size: 14px;
+    text-align: center;
+}
+.section li:hover {
+    background-color: #313131;
+    color: #fff8f8;
+}
+.section li:first-child {
+    background-color: #313131;
+    color: #fff8f8;
+}
+.gallery {
+    width: 90%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+
+}
+
+@media (min-width:768px){
+    #img-box1:first-child {
+        flex-grow: 1;  
+    }
+    #img-box1:nth-child(2) {
+        flex-grow: 2;
+        height: 400px;
+    }
+    #img-box1:nth-child(3) {
+        flex-grow: 1;
+    }
+    #img-box2:first-child {
+        flex-grow: 2;
+    }
+    #img-box2:nth-child(2) {
+        flex-grow: 1;
+        height: 50px;
+    }
+    #img-box2:nth-child(3) {
+        flex-grow: 1;
+    }
+}
+.img-box {
+    width: 50%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px;
+}
+
+.img-box>img {
+    height: 200px;
+    width: 100%;
+    padding-bottom: 30px;
+}
+@media (max-width: 767px
+){   
+    .header-content>h1 {
+        font-size: 17px;
+    }
+    .section {
+        padding-top: 30px;
+    }
+    .section ul {
+        padding-bottom: 30px;
+    }
+    .section li {
+        font-size: 10px;
+        display: block;
+        margin-bottom: 1px;
+    }
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+    .img-box {
+        width: 70%;
+        
+    }
+    .img-box img {
+        height: auto;
+    }
+  
+}
+.article {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 200px;
+    overflow: hidden;
+}
+.article p {
+    width: 80%;
+    max-width: 588px;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Lekton';
+}
+.diamond-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.outer {
+    transform: rotate(45deg);
+    height: 10px;
+    width: 10px;
+    margin: 0px 14px;
+    
+    border: 2px solid black;
+}
+.diamond {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    
+}
+#diamond1 {
+    background-color: white;
+    
+}
+#diamond2 {
+    background-color: grey;
+}
+#diamond3 {
+    background-color: grey;
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.copyright p {
+    border-bottom: 1px solid grey;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+    margin: 0px;
+    color: grey;
+    font-family: arial;
+}
+#footer {
+    animation-duration: 1s;
+}
+.footer ul {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 20px;
+    
+}
+.footer li {
+    list-style: none;
+    display: inline;
+    margin: 0px 7px;
+    color: grey;
+    font-family: arial;
+    text-align: center;
+}
+.footer li:hover {
+    color: rgba(128, 128, 128, 0.56);
+}
+</style>
+{# end of styles of header css  #}
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-collapse" id="nav-collapse">
+            <div class="cross" id="crossham">
+                <div class="line crossline"></div>
+                <div class="line crossline"></div>
+            </div>
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>CONTACT</li>
+            </ul>
+        </div>
+        <div class="header animated fadeIn" id="header">
+            <div class="navbar animated fadeInDown">
+                <h2>LOGO</h2>
+                <div class="hamburger" id="ham">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="header-content animated fadeInLeft">
+                <h1>IT'S NOT JUST A PORTFOLIO.</h1>
+                <h1>BUT A NEW WAY TO DELIVER IDEAS.</h1>
+            </div>
+            <div class="header-background"></div>
+        </div>
+
+        <div class="section" id="section">
+            <div class="gallery-header animated
+            fadeInRight" id="gallery-header">
+                <ul id="ul">
+                    <li id="first">MINIMAL</li>
+                    <li id="second">COLORFUL</li>
+
+                </ul>
+            </div>
+            <div class="gallery animated
+                fadeInLeft" id="gallery">
+                <div class="img-box" id="imgbox1">
+                    <img src="http://cdn.waaterkant.com/wp-content/uploads/2015/03/Maria-Ustinova-B-ANNET-7.png" alt="" id="img-box1">
+                    <img src="https://static.pexels.com/photos/735279/pexels-photo-735279.jpeg" alt="" id="img-box1">
+                    <img src="http://carla-izumi-bamford.com/wp-content/uploads/2016/04/10-rules-of-minimalist-design-less-is-more.png" alt=""
+                        id="img-box1">
+                </div>
+                <div class="img-box" id="imgbox2">
+                    <img src="https://cdn.shopify.com/s/files/1/0229/8747/products/Black_white_striped_foil_balloons_1024x1024.png?v=1502174446"
+                        alt="" id="img-box2">
+                    <img src="https://i.pinimg.com/originals/bc/8b/2f/bc8b2fad3ff6321ddee751367e58ca73.jpg" alt="" id="img-box2">
+                    <img src="https://www.demilked.com/magazine/wp-content/uploads/2016/01/minimal-photography-funny-balloons-peechaya-burroughs-6.jpg"
+                        alt="" id="img-box2">
+                </div>
+            </div>
+        </div>
+
+        <div class="article animated slideInUp" id="article">
+
+            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eum nostrum sunt nesciunt dignissimos fuga omnis
+                officiis nam est optio."</p>
+
+            <div class="diamond-div">
+                <div class="outer">
+                    <div class="diamond" id="diamond1"></div>
+                </div>
+                <div class="outer">
+                    <div class="diamond" id="diamond2"></div>
+                </div>
+                <div class="outer">
+                    <div class="diamond" id="diamond3"></div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="footer animated slideInUp" id="footer">
+            <div class="copyright">
+                <p>Template Clone by Marco Seoane</p>
+            </div>
+            <div class="social-media">
+                <ul>
+                    <li>FACEBOOK</li>
+                    <li>TWITTER</li>
+                    <li>DRIBBLE</li>
+                    <li>INSTAGRAM</li>
+                    <li>GOOGLE+</li>
+                    <li>LINKEDIN</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>document.getElementById('first').addEventListener('click', changeLiFirst)
+
+document.getElementById('second').addEventListener('click', changeLiSecond);
+
+document.getElementById('ham').addEventListener('click', collapseNav);
+
+document.getElementById('crossham').addEventListener('click', uncollapseNav);
+
+var count = 0;
+
+setInterval(function () {
+    let pDiv = document.querySelector('.article p');
+    console.log(pDiv);
+    if (count == 0) {
+        pDiv.className = 'animated fadeOutLeft';
+        let diamond = document.querySelector('#diamond1');
+        diamond.className = 'diamond animated zoomIn';
+        diamond.style.backgroundColor = 'grey';
+        diamond = document.querySelector('#diamond2');
+        diamond.className += ' animated zoomOut';
+        count++;
+        console.log(count);
+        pDiv.className = 'animated slideInRight';
+        setTimeout(function(){
+            pDiv.className = '';
+        },2000)
+        
+    }
+    else if (count == 1) {
+        pDiv.className = 'animated fadeOutLeft';
+        let diamond = document.querySelector('#diamond2');
+        diamond.className = 'diamond animated zoomIn';
+        diamond = document.querySelector('#diamond3');
+        diamond.className = 'diamond animated zoomOut';
+        count++;
+        console.log(count);
+        pDiv.className = 'animated slideInRight';
+        setTimeout(function(){
+            pDiv.className = '';
+        },2000)
+    }
+    else if (count == 2) {
+        pDiv.className = 'animated fadeOutLeft';
+        let diamond = document.querySelector('#diamond3');
+        diamond.className = 'diamond animated zoomIn';
+        diamond = document.querySelector('#diamond1');
+        diamond.className = 'diamond animated zoomOut';
+        count=0;
+        console.log(count);
+        pDiv.className = 'animated slideInRight'
+        setTimeout(function(){
+            pDiv.className = '';
+        },2000)
+    }
+    
+    
+    
+}, 5000);
+
+
+function collapseNav() {
+    let navCollapse = document.getElementById('nav-collapse');
+    if (navCollapse.className !== 'animate fadeInDown') {
+        navCollapse.style.display = 'flex';
+
+        navCollapse.className = 'nav-collapse animated fadeInDown';
+    }
+    else {
+
+    }
+}
+
+function uncollapseNav() {
+    let navCollapse = document.getElementById('nav-collapse');
+
+    navCollapse.className = 'nav-collapse animated fadeOutUp';
+
+    setTimeout(function () {
+        navCollapse.style.display = 'none';
+    }, 300);
+}
+
+function changeLiFirst() {
+    let liFirst = document.getElementById('first');
+    let liSecond = document.getElementById('second');
+
+    liFirst.style.backgroundColor = '#313131';
+    liFirst.style.color = '#fff8f8';
+
+    liSecond.style.backgroundColor = '#E9E9E9';
+    liSecond.style.color = '#969696';
+
+
+
+    let imgbox1 = document.getElementById('imgbox1');
+
+    let imgbox2 = document.getElementById('imgbox2');
+
+
+    // console.log(imgbox1.childNodes[1].className)
+    if (imgbox2.childNodes[1].className == '') {
+        imgbox2.childNodes[1].className = 'animated rotateInUpLeft';
+        imgbox2.childNodes[3].className = 'animated rotateInUpRight';
+        imgbox1.childNodes[1].className = 'animated slideInDown';
+        imgbox1.childNodes[3].className = 'animated slideInUp'
+        imgbox1.className += ' animated fadeIn';
+        imgbox2.className += ' animated fadeIn';
+        imgbox1.childNodes[1].src = 'http://cdn.waaterkant.com/wp-content/uploads/2015/03/Maria-Ustinova-B-ANNET-7.png';
+        imgbox1.childNodes[3].src = 'https://static.pexels.com/photos/735279/pexels-photo-735279.jpeg';
+        imgbox1.childNodes[5].src = 'http://carla-izumi-bamford.com/wp-content/uploads/2016/04/10-rules-of-minimalist-design-less-is-more.png';
+        imgbox2.childNodes[1].src = 'https://cdn.shopify.com/s/files/1/0229/8747/products/Black_white_striped_foil_balloons_1024x1024.png?v=1502174446';
+        imgbox2.childNodes[3].src = 'https://i.pinimg.com/originals/bc/8b/2f/bc8b2fad3ff6321ddee751367e58ca73.jpg';
+        imgbox2.childNodes[5].src = 'https://www.demilked.com/magazine/wp-content/uploads/2016/01/minimal-photography-funny-balloons-peechaya-burroughs-6.jpg';
+    }
+    else {
+        imgbox2.childNodes[1].className = '';
+        imgbox2.childNodes[3].className = '';
+        imgbox1.childNodes[1].className = '';
+        imgbox1.childNodes[3].className = '';
+        imgbox1.className = 'img-box';
+        imgbox2.className = 'img-box';
+        setTimeout(changeLiFirst, 200);
+    }
+}
+
+function changeLiSecond() {
+    let liFirst = document.getElementById('first');
+    let liSecond = document.getElementById('second');
+
+    liSecond.style.backgroundColor = '#313131';
+    liSecond.style.color = '#fff8f8';
+
+    liFirst.style.backgroundColor = '#E9E9E9';
+    liFirst.style.color = '#969696';
+
+    let imgbox1 = document.getElementById('imgbox1');
+
+    let imgbox2 = document.getElementById('imgbox2');
+
+    // console.log(imgbox1.childNodes[5].src)
+    if (imgbox1.childNodes[1].className == '') {
+        imgbox1.childNodes[1].className = 'animated fadeInLeft';
+        imgbox1.childNodes[3].className = 'animated slideInUp';
+        imgbox1.className += ' animated fadeIn';
+        imgbox2.className += ' animated fadeIn';
+        imgbox2.childNodes[1].className = 'animated slideInRight';
+        imgbox2.childNodes[3].className = 'animated slideInUp';
+        imgbox1.childNodes[1].src = 'https://static.pexels.com/photos/185933/pexels-photo-185933.jpeg';
+        imgbox1.childNodes[3].src = 'https://static.pexels.com/photos/5689/road-art-camera-photography.jpg';
+        imgbox1.childNodes[5].src = 'https://static.pexels.com/photos/260024/pexels-photo-260024.jpeg';
+        imgbox2.childNodes[1].src = 'https://static.pexels.com/photos/806457/pexels-photo-806457.jpeg';
+        imgbox2.childNodes[3].src = 'http://www.jessbonham.co.uk/wp-content/uploads/2017/09/Screen-Shot-2017-09-08-at-15.43.07-516x289.png';
+        imgbox2.childNodes[5].src = 'http://www.issueno206.com/wp-content/uploads/2015/06/neu02-kingo.jpg';
+    }
+    else {
+        imgbox1.childNodes[1].className = '';
+        imgbox1.childNodes[3].className = '';
+        imgbox2.childNodes[1].className = '';
+        imgbox2.childNodes[3].className = '';
+        imgbox1.className = 'img-box';
+        imgbox2.className = 'img-box';
+        setTimeout(changeLiSecond, 200);
+    }
+
+}
+
+
+</script> 
+{# end of script of header page inspired by codepen.io for example and fastly maked  #}
+</body>
+
+</html>

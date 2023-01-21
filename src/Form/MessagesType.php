@@ -33,7 +33,7 @@ class MessagesType extends AbstractType
             )
             ->add('recipient', EntityType::class, [
                 'class' => Users::class,
-                'choice-label' => 'email',
+                'choice_label' => 'email',
                 'attr' => [
                     'class' => 'form-control',
                 ]

@@ -52,4 +52,30 @@ class MessagesController extends AbstractController
             'controller_name' => 'Message(s) reçu(s)',
         ]);
     }
+
+    // read message
+    #[Route('/read/{id}', name: 'app_read')]
+    public function read(Messages $message, EntityManagerInterface $em ): Response
+    {
+        $message->setIsRead(true); 
+        $em->persist($message);
+        $em->flush(); 
+        return $this->render('messages/read.html.twig', [
+            'controller_name' => 'Message(s) lu(s',
+            'message' => $message
+
+        ]);
+    } 
+
+    // suppression des messages : 
+
+    #[Route('/delete/{id}', name: 'app_delete')]
+    public function Delete(Messages $message, EntityManagerInterface $em ): Response
+    {
+        // $message->setIsRead(true); 
+        // $em->persist($message);
+        $em->remove($message); 
+        $em->flush(); 
+       return $this->redirectToRoute('app_received'); 
+    } 
 }

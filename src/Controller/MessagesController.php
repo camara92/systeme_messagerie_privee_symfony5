@@ -78,4 +78,12 @@ class MessagesController extends AbstractController
         $em->flush(); 
        return $this->redirectToRoute('app_received'); 
     } 
+    // voir les messages envoyés : 
+    #[Route('/sent', name: 'app_sent')]
+    public function sent(): Response
+    {
+        return $this->render('messages/sent.html.twig', [
+            'controller_name' => 'Message(s) envoyé(s)',
+        ]);
+    }
 }

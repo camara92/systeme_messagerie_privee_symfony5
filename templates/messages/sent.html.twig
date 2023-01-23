@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Messagerie envoyés
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+
+		<div class="row">
+			<div class="col-12">
+				<h1>Messagerie
+				</h1>
+				<h2>Messages envoyés
+				</h2>
+				<p>Vous avez envoyé :
+					{{app.user.sent|length }}
+					messages</p>
+			</div>
+			<div class="col-3">De
+			</div>
+			<div class="col-3">sujet
+			</div>
+			<div class="col-3">Date
+			</div>
+			<div class="col-3">Actions
+			</div>
+			{# parcourir les messages reçus  #}
+			{% for message in app.user.sent  %}
+				{% if message.isRead ==0 %}
+					{% set bold = "fw-bold" %}
+				{% else %}
+					{% set bold = "" %}
+				{% endif %}
+
+				
+				
+				
+				
+
+				<div class="col-3 {{bold }}  ">
+					{{message.sender.email}}
+				</div>
+				<div class="col-3 {{bold }} ">
+					<a href=" {{path('app_read', {id:message.id} )}} ">
+						{{ message.title }}
+					</a>
+				</div>
+				<div class="col-3 {{bold }} ">
+					{{message.createdAt | date }}
+				</div>
+				<div class=" col-3 ">
+					<a class="me-2 text-decoration-none" href=" {{path('app_read', {id:message.id} )}} ">
+						<i class="fa-solid fa-eye"></i>
+
+					</a>
+					{# <a href="">
+								 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x text-danger"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </i> </a>  #}
+					<a
+						href=" {{path('app_delete', {id:message.id} )}}  ">
+						{# <i class="fa-sharp fa-solid fa-circle-xmark"></i> #}
+
+						<i class="fa-regular fa-trash-can"></i>
+
+					</a>
+
+				
+
+
+				</div>
+			{% endfor %}
+
+			<div class="col">
+				<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+					Voir mes dossiers
+				</a>
+				<a href=" {{path('app_send')}} " class="btn btn-primary">Envoyer un message
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers
+			</h2>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="list-group">
+				<a class="list-group-item list-group-item-action " href=" {{path('app_messages')}} ">Accueil</a>
+			</div>
+			<div class="list-group">
+				<a class="list-group-item list-group-item-action " href=" {{path('app_received')}} ">Boite de réception</a>
+			</div>
+			<div class="list-group">
+				<a class="list-group-item list-group-item-action active " href=" {{path('app_sent')}} ">Messages envoyés
+				</a>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

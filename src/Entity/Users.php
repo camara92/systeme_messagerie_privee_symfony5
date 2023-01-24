@@ -37,6 +37,21 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'recipient', targetEntity: Messages::class, orphanRemoval: true)]
     private Collection $received;
 
+    #[ORM\Column(length: 50)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 60)]
+    private ?string $lastname = null;
+
+    #[ORM\Column]
+    private ?int $cp = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $userprofile = null;
+
     public function __construct()
     {
         $this->sent = new ArrayCollection();
@@ -169,6 +184,66 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $received->setRecipient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getCp(): ?int
+    {
+        return $this->cp;
+    }
+
+    public function setCp(int $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getUserprofile(): ?string
+    {
+        return $this->userprofile;
+    }
+
+    public function setUserprofile(?string $userprofile): self
+    {
+        $this->userprofile = $userprofile;
 
         return $this;
     }

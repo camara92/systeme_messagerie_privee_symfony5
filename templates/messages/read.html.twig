@@ -17,6 +17,7 @@
              <p> Date d'envoie : {{message.createdAt | date     }}</p>
              
              <div> {{message.message }} </div> 
+			 <div> {{message.file | raw }}</div>
 				<a class="btn btn-primary mt-3 my-2 text-bold " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
 					Voir mes dossiers
 				</a>

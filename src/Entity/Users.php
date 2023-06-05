@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -20,6 +21,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Groups('listMessageFull')]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -29,27 +31,35 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Groups('listMessagesFull')]
     private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'sender', targetEntity: Messages::class, orphanRemoval: true)]
+    // #[Groups('listMessagesFull')]
     private Collection $sent;
 
     #[ORM\OneToMany(mappedBy: 'recipient', targetEntity: Messages::class, orphanRemoval: true)]
+    // #[Groups('listMessagesFull')]
     private Collection $received;
 
     #[ORM\Column(length: 50)]
+    #[Groups('listMessagesFull')]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 60)]
+    #[Groups('listMessagesFull')]
     private ?string $lastname = null;
 
     #[ORM\Column]
+    #[Groups('listMessagesFull')]
     private ?int $cp = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('listMessagesFull')]
     private ?string $city = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('listMessagesFull')]
     private ?string $userprofile = null;
 
     public function __construct()
